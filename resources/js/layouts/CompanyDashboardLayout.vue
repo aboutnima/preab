@@ -10,10 +10,9 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Separator } from '@/components/ui/separator';
 import type { NavItemProps, SharedPageProps } from '@/types';
-import LogoutController from '@/wayfinder/actions/App/Http/Controllers/Company/Authentication/LogoutController';
-import DashboardController from '@/wayfinder/actions/App/Http/Controllers/Company/DashboardController';
+import DashboardController from '@/actions/App/Http/Controllers/Company/DashboardController';
+import LogoutController from '@/actions/App/Http/Controllers/Company/Authentication/LogoutController';
 import ProfileController from '@/actions/App/Http/Controllers/Company/Settings/ProfileController';
 
 const page = usePage<SharedPageProps>();
@@ -38,11 +37,6 @@ const navItems: NavItemProps[] = [
         href: DashboardController.index().url,
         icon: 'dashboard',
     },
-    {
-        label: 'Account Settings',
-        href: ProfileController.index().url,
-        icon: 'settings',
-    },
 ];
 
 function isActive(href: string): boolean {
@@ -56,11 +50,9 @@ function logout(): void {
 
 <template>
     <div class="flex h-screen overflow-hidden bg-background">
-        <!-- ─── Sidebar ─────────────────────────────────────── -->
         <aside
             class="flex w-64 shrink-0 flex-col border-r border-border bg-sidebar"
         >
-            <!-- Logo -->
             <div
                 class="flex h-14 items-center gap-2.5 border-b border-sidebar-border px-5"
             >
@@ -87,9 +79,7 @@ function logout(): void {
                     >Preab</span
                 >
             </div>
-
-            <!-- Nav -->
-            <nav class="flex-1 overflow-y-auto px-3 py-4">
+            <nav class="flex-1 overflow-y-auto p-5">
                 <ul class="space-y-0.5">
                     <li v-for="item in navItems" :key="item.href">
                         <a
@@ -155,7 +145,9 @@ function logout(): void {
                                     class="size-4 shrink-0"
                                 >
                                     <circle cx="12" cy="12" r="3" />
-                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                                    <path
+                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
+                                    />
                                 </svg>
                             </template>
                             {{ item.label }}
@@ -163,14 +155,12 @@ function logout(): void {
                     </li>
                 </ul>
             </nav>
-
-            <!-- Bottom: separator + company menu -->
-            <div class="px-3 pb-4">
-                <Separator class="mb-3 bg-sidebar-border" />
-
+            <div
+                class="flex h-14 items-center border-t border-sidebar-border px-5"
+            >
                 <DropdownMenu>
                     <DropdownMenuTrigger
-                        class="flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-sm transition-colors hover:bg-sidebar-accent/60 focus:outline-none"
+                        class="flex w-full items-center gap-2.5 rounded-md text-sm transition-colors hover:bg-sidebar-accent/60 focus:outline-none"
                     >
                         <Avatar class="size-7 shrink-0">
                             <AvatarFallback
@@ -267,10 +257,7 @@ function logout(): void {
                 </DropdownMenu>
             </div>
         </aside>
-
-        <!-- ─── Main column ────────────────────────────────── -->
         <div class="flex min-w-0 flex-1 flex-col overflow-hidden">
-            <!-- Top navbar / breadcrumb bar -->
             <header
                 class="flex h-14 shrink-0 items-center border-b border-border bg-background px-6"
             >
@@ -307,8 +294,6 @@ function logout(): void {
                     </template>
                 </nav>
             </header>
-
-            <!-- Page content -->
             <main class="flex-1 overflow-y-auto bg-background">
                 <slot />
             </main>
