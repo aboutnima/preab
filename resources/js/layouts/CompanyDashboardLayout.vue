@@ -246,7 +246,7 @@ function logout(): void {
                     </div>
                 </div>
                 <!-- Page content -->
-                <div class="p-6">
+                <div class="p-6 h-full">
                     <slot />
                 </div>
             </main>

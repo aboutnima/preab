@@ -32,7 +32,7 @@ function isActive(href: string): boolean {
 </script>
 
 <template>
-    <div class="flex min-h-full">
+    <div class="flex min-h-full -m-6">
         <aside class="flex w-56 shrink-0 flex-col border-r border-border">
             <nav class="flex-1 overflow-y-auto p-5">
                 <ul class="space-y-0.5">
@@ -59,7 +59,7 @@ function isActive(href: string): boolean {
                 </ul>
             </nav>
         </aside>
-        <div class="min-w-0 flex-1">
+        <div class="min-w-0 flex-1 p-6">
             <slot />
         </div>
     </div>
