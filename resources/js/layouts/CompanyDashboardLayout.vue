@@ -11,11 +11,11 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';
-import type { NavItemProps } from '@/types';
+import type { NavItemProps, SharedPageProps } from '@/types';
 import LogoutController from '@/wayfinder/actions/App/Http/Controllers/Company/Authentication/LogoutController';
 import DashboardController from '@/wayfinder/actions/App/Http/Controllers/Company/DashboardController';
 
-const page = usePage();
+const page = usePage<SharedPageProps>();
 
 const company = computed(() => page.props.auth);
 const breadcrumbs = computed(() => page.props.breadcrumbs ?? []);

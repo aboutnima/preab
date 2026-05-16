@@ -1,4 +1,4 @@
-import type { BreadcrumbItemProps, Company } from '@/types';
+import type { SharedPageProps } from '@/types';
 
 // Extend ImportMeta interface for Vite...
 declare module 'vite/client' {
@@ -15,10 +15,8 @@ declare module 'vite/client' {
 
 declare module '@inertiajs/core' {
     export interface InertiaConfig {
-        sharedPageProps: {
+        sharedPageProps: SharedPageProps & {
             name: string;
-            auth: Company | null;
-            breadcrumbs: BreadcrumbItemProps[];
             [key: string]: unknown;
         };
     }
