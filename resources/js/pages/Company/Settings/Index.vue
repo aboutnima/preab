@@ -9,10 +9,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import type { SharedPageProps } from '@/types';
-import EmailController from '@/actions/App/Http/Controllers/Company/Settings/EmailController';
-import LogoController from '@/actions/App/Http/Controllers/Company/Settings/LogoController';
-import PasswordController from '@/actions/App/Http/Controllers/Company/Settings/PasswordController';
-import ProfileController from '@/actions/App/Http/Controllers/Company/Settings/ProfileController';
+import EmailController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/EmailController';
+import LogoController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/LogoController';
+import PasswordController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/PasswordController';
+import ProfileController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/ProfileController';
 
 defineOptions({ layout: CompanyDashboardLayout });
 

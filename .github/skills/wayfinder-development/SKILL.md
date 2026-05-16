@@ -30,7 +30,7 @@ vendor/bin/sail artisan wayfinder:generate --with-form --no-interaction
 <!-- Controller Action Imports -->
 ```typescript
 // Named imports for tree-shaking (preferred)...
-import { show, store, update } from '@/actions/App/Http/Controllers/PostController'
+import { show, store, update } from '@/wayfinder/actions/App/Http/Controllers/PostController'
 
 // Named route imports...
 import { show as postShow } from '@/routes/post'

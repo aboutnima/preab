@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import type { SharedPageProps } from '@/types';
-import ProfileController from '@/actions/App/Http/Controllers/Company/Settings/ProfileController';
+import ProfileController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/ProfileController';
 
 defineOptions({ layout: [CompanyDashboardLayout, CompanySettingsLayout] });
 

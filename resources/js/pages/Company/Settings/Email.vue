@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import type { SharedPageProps } from '@/types';
-import EmailController from '@/actions/App/Http/Controllers/Company/Settings/EmailController';
+import EmailController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/EmailController';
 
 defineOptions({ layout: [CompanyDashboardLayout, CompanySettingsLayout] });
 

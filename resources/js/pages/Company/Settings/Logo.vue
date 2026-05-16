@@ -6,7 +6,7 @@ import CompanySettingsLayout from '@/layouts/CompanySettingsLayout.vue';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import type { SharedPageProps } from '@/types';
-import LogoController from '@/actions/App/Http/Controllers/Company/Settings/LogoController';
+import LogoController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/LogoController';
 
 defineOptions({ layout: [CompanyDashboardLayout, CompanySettingsLayout] });
 

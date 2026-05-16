@@ -199,3 +199,35 @@ Use Wayfinder to generate TypeScript functions for Laravel routes. Import from `
 - View all available Sail commands by running `vendor/bin/sail` without arguments.
 
 </laravel-boost-guidelines>
+
+
+## Wayfinder Generation
+
+- Do not generate Wayfinder files automatically. The user will generate them manually because the default output paths are customized.
+- The application uses this custom configuration:
+
+```php
+wayfinder({
+    formVariants: true,
+    path: 'resources/js/wayfinder',
+}),
+```
+
+- Default generated paths like `/resources/js/routes`, `/resources/js/actions`, and `/resources/js/wayfinder` are not valid for this project.
+- Custom structure in this project:
+  - `resources/js/wayfinder/wayfinder`
+  - `resources/js/wayfinder/actions`
+  - `resources/js/wayfinder/routes`
+
+- If you need to generate Wayfinder files using Artisan, always use:
+
+```bash
+php artisan wayfinder:generate --path=resources/js/wayfinder
+```
+
+
+## Frontend UI Rules
+
+- For frontend icons, always use Hugeicons.
+- Do not ask or instruct to run `npm run build` for testing frontend changes.
+- The development environment already uses `npm run dev`.
