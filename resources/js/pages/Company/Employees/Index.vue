@@ -9,18 +9,10 @@ import { HugeiconsIcon } from '@hugeicons/vue';
 import { router } from '@inertiajs/vue3';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import CompanyDashboardLayout from '@/layouts/CompanyDashboardLayout.vue';
 import type { EmployeeType } from '@/types';
 import EmployeeController from '@/wayfinder/actions/App/Http/Controllers/Company/Employees/EmployeeController';
-
-defineOptions({ layout: CompanyDashboardLayout });
 
 defineProps<{
     employees: EmployeeType[];
@@ -44,20 +36,14 @@ function destroy(employee: EmployeeType): void {
 </script>
 
 <template>
-    <div class="px-8 py-8">
-        <!-- Page header -->
-        <div class="mb-6 flex items-center justify-between">
-            <div>
-                <h1 class="text-2xl font-semibold tracking-tight text-foreground">Employees</h1>
-                <p class="mt-1 text-sm text-muted-foreground">
-                    Manage your team members.
-                </p>
-            </div>
+    <CompanyDashboardLayout title="Employees" description="Manage your team members.">
+        <!-- Action button teleported into the header bar -->
+        <Teleport to="#company-page-actions">
             <Button @click="visitCreate">
                 <HugeiconsIcon :icon="Add01Icon" :size="16" :stroke-width="2" class="mr-1.5" />
                 Add Employee
             </Button>
-        </div>
+        </Teleport>
 
         <!-- Empty state -->
         <Card v-if="employees.length === 0">
@@ -103,7 +89,7 @@ function destroy(employee: EmployeeType): void {
                         <tr
                             v-for="employee in employees"
                             :key="employee.id"
-                            class="border-b border-border last:border-0 hover:bg-muted/20 transition-colors"
+                            class="border-b border-border last:border-0 transition-colors hover:bg-muted/20"
                         >
                             <td class="px-4 py-3 font-medium text-foreground">
                                 {{ employee.first_name }} {{ employee.last_name }}
@@ -153,6 +139,5 @@ function destroy(employee: EmployeeType): void {
                 </table>
             </CardContent>
         </Card>
-    </div>
+    </CompanyDashboardLayout>
 </template>
-

@@ -8,7 +8,6 @@ import CompanyDashboardLayout from '@/layouts/CompanyDashboardLayout.vue';
 import type { Gender } from '@/types';
 import EmployeeController from '@/wayfinder/actions/App/Http/Controllers/Company/Employees/EmployeeController';
 
-defineOptions({ layout: CompanyDashboardLayout });
 
 const form = useForm({
     first_name: '',
@@ -28,12 +27,7 @@ function submit(): void {
 </script>
 
 <template>
-    <div class="px-8 py-8">
-        <div class="mb-6">
-            <h1 class="text-2xl font-semibold tracking-tight text-foreground">Add Employee</h1>
-            <p class="mt-1 text-sm text-muted-foreground">Create a new team member for your company.</p>
-        </div>
-
+    <CompanyDashboardLayout title="Add Employee" description="Create a new team member for your company.">
         <div class="max-w-2xl">
             <Card>
                 <CardHeader>
@@ -193,6 +187,6 @@ function submit(): void {
                 </CardContent>
             </Card>
         </div>
-    </div>
+    </CompanyDashboardLayout>
 </template>
 

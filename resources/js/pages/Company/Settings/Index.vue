@@ -14,7 +14,6 @@ import LogoController from '@/wayfinder/actions/App/Http/Controllers/Company/Set
 import PasswordController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/PasswordController';
 import ProfileController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/ProfileController';
 
-defineOptions({ layout: CompanyDashboardLayout });
 
 const page = usePage<SharedPageProps>();
 const company = computed(() => page.props.auth);
@@ -99,13 +98,9 @@ function updatePassword() {
 </script>
 
 <template>
-    <div class="mx-auto max-w-2xl px-6 py-8">
-        <div class="mb-8">
-            <h1 class="text-2xl font-semibold tracking-tight text-foreground">Account Settings</h1>
-            <p class="mt-1 text-sm text-muted-foreground">Manage your company profile and security.</p>
-        </div>
-
-        <div class="space-y-6">
+    <CompanyDashboardLayout title="Account Settings" description="Manage your company profile and security.">
+        <div class="mx-auto max-w-2xl">
+            <div class="space-y-6">
             <!-- ── Profile ───────────────────────────────── -->
             <Card>
                 <CardHeader>
@@ -318,6 +313,7 @@ function updatePassword() {
                 </CardContent>
             </Card>
         </div>
-    </div>
+        </div>
+    </CompanyDashboardLayout>
 </template>
 

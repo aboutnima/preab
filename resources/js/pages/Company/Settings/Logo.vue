@@ -8,8 +8,6 @@ import CompanySettingsLayout from '@/layouts/CompanySettingsLayout.vue';
 import type { SharedPageProps } from '@/types';
 import LogoController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/LogoController';
 
-defineOptions({ layout: [CompanyDashboardLayout, CompanySettingsLayout] });
-
 const page = usePage<SharedPageProps>();
 const company = computed(() => page.props.auth);
 
@@ -33,8 +31,8 @@ function onLogoSelected(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
 
     if (!file) {
-        return;
-    }
+return;
+}
 
     logoForm.logo = file;
     logoForm.post(LogoController.store().url, {
@@ -43,8 +41,8 @@ function onLogoSelected(event: Event) {
             logoForm.reset();
 
             if (logoInput.value) {
-                logoInput.value.value = '';
-            }
+logoInput.value.value = '';
+}
         },
     });
 }
@@ -55,50 +53,48 @@ function removeLogo() {
 </script>
 
 <template>
-    <div class="max-w-lg">
-        <div class="mb-6">
-            <h2 class="text-base font-semibold text-foreground">Company Logo</h2>
-            <p class="mt-0.5 text-sm text-muted-foreground">JPG, PNG or WebP · max 2 MB.</p>
-        </div>
+    <CompanyDashboardLayout title="Company Logo" description="JPG, PNG or WebP · max 2 MB.">
+        <CompanySettingsLayout>
+            <div class="max-w-lg">
+                <div class="flex items-center gap-5">
+                    <Avatar class="size-20">
+                        <AvatarImage v-if="logoUrl" :src="logoUrl" :alt="company?.name" />
+                        <AvatarFallback class="bg-foreground text-xl font-semibold text-background">
+                            {{ companyInitials }}
+                        </AvatarFallback>
+                    </Avatar>
 
-        <div class="flex items-center gap-5">
-            <Avatar class="size-20">
-                <AvatarImage v-if="logoUrl" :src="logoUrl" :alt="company?.name" />
-                <AvatarFallback class="bg-foreground text-xl font-semibold text-background">
-                    {{ companyInitials }}
-                </AvatarFallback>
-            </Avatar>
+                    <div class="flex flex-col gap-3">
+                        <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            :disabled="logoForm.processing"
+                            @click="logoInput?.click()"
+                        >
+                            {{ logoUrl ? 'Change logo' : 'Upload logo' }}
+                        </Button>
 
-            <div class="flex flex-col gap-3">
-                <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    :disabled="logoForm.processing"
-                    @click="logoInput?.click()"
-                >
-                    {{ logoUrl ? 'Change logo' : 'Upload logo' }}
-                </Button>
+                        <Button
+                            v-if="logoUrl"
+                            type="button"
+                            variant="destructive"
+                            size="sm"
+                            @click="removeLogo"
+                        >
+                            Remove logo
+                        </Button>
+                    </div>
 
-                <Button
-                    v-if="logoUrl"
-                    type="button"
-                    variant="destructive"
-                    size="sm"
-                    @click="removeLogo"
-                >
-                    Remove logo
-                </Button>
+                    <input
+                        ref="logoInput"
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp"
+                        class="hidden"
+                        @change="onLogoSelected"
+                    />
+                </div>
             </div>
-
-            <input
-                ref="logoInput"
-                type="file"
-                accept="image/jpeg,image/png,image/webp"
-                class="hidden"
-                @change="onLogoSelected"
-            />
-        </div>
-    </div>
+        </CompanySettingsLayout>
+    </CompanyDashboardLayout>
 </template>
-

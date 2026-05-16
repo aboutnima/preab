@@ -59,7 +59,7 @@ function isActive(href: string): boolean {
                 </ul>
             </nav>
         </aside>
-        <div class="min-w-0 flex-1 px-8 py-6">
+        <div class="min-w-0 flex-1">
             <slot />
         </div>
     </div>

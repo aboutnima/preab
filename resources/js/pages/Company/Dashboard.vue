@@ -4,26 +4,17 @@ import { HugeiconsIcon } from '@hugeicons/vue';
 import { usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import CompanyDashboardLayout from '@/layouts/CompanyDashboardLayout.vue';
+import type { SharedPageProps } from '@/types';
 
-defineOptions({ layout: CompanyDashboardLayout });
-
-const page = usePage();
+const page = usePage<SharedPageProps>();
 const company = computed(() => page.props.auth);
 </script>
 
 <template>
-    <div class="px-8 py-8">
-        <!-- Page header -->
-        <div class="mb-8">
-            <h1 class="text-2xl font-semibold tracking-tight text-foreground">
-                Welcome back, {{ company?.name }}
-            </h1>
-            <p class="mt-1 text-sm text-muted-foreground">
-                Here's what's happening with your account.
-            </p>
-        </div>
-
-        <!-- Placeholder content area -->
+    <CompanyDashboardLayout
+        :title="`Welcome back, ${company?.name}`"
+        description="Here's what's happening with your account."
+    >
         <div class="rounded-lg border border-border bg-card p-12 text-center">
             <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-muted">
                 <HugeiconsIcon
@@ -38,5 +29,5 @@ const company = computed(() => page.props.auth);
                 Content and modules will appear here as they are built.
             </p>
         </div>
-    </div>
+    </CompanyDashboardLayout>
 </template>

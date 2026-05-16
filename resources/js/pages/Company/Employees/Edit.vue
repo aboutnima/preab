@@ -8,7 +8,6 @@ import CompanyDashboardLayout from '@/layouts/CompanyDashboardLayout.vue';
 import type { EmployeeType, Gender } from '@/types';
 import EmployeeController from '@/wayfinder/actions/App/Http/Controllers/Company/Employees/EmployeeController';
 
-defineOptions({ layout: CompanyDashboardLayout });
 
 const props = defineProps<{
     employee: Pick<EmployeeType, 'id' | 'first_name' | 'last_name' | 'email' | 'gender' | 'username' | 'bio' | 'is_active'>;
@@ -32,16 +31,10 @@ function submit(): void {
 </script>
 
 <template>
-    <div class="px-8 py-8">
-        <div class="mb-6">
-            <h1 class="text-2xl font-semibold tracking-tight text-foreground">
-                Edit Employee
-            </h1>
-            <p class="mt-1 text-sm text-muted-foreground">
-                Update {{ employee.first_name }} {{ employee.last_name }}'s details.
-            </p>
-        </div>
-
+    <CompanyDashboardLayout
+        :title="`${employee.first_name} ${employee.last_name}`"
+        description="Update employee details."
+    >
         <div class="max-w-2xl">
             <Card>
                 <CardHeader>
@@ -201,6 +194,6 @@ function submit(): void {
                 </CardContent>
             </Card>
         </div>
-    </div>
+    </CompanyDashboardLayout>
 </template>
 

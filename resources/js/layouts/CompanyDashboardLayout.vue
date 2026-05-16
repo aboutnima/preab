@@ -31,6 +31,11 @@ const page = usePage<SharedPageProps>();
 const company = computed(() => page.props.auth);
 const breadcrumbs = computed(() => page.props.breadcrumbs ?? []);
 
+const props = defineProps<{
+    title?: string;
+    description?: string;
+}>();
+
 const companyInitials = computed(() => {
     return (
         company.value?.name
@@ -219,7 +224,31 @@ function logout(): void {
                 </nav>
             </header>
             <main class="flex-1 overflow-y-auto bg-background">
-                <slot />
+                <!-- Page header bar — shown when the page passes a title prop -->
+                <div
+                    v-show="props.title"
+                    class="flex h-20 items-center border-b border-sidebar-border bg-gray-50 px-6 dark:bg-sidebar/50"
+                >
+                    <div class="flex flex-1 items-center justify-between">
+                        <header class="flex flex-col gap-0.5">
+                            <h3 class="text-base font-medium text-foreground">
+                                {{ props.title }}
+                            </h3>
+                            <p
+                                v-if="props.description"
+                                class="text-sm text-muted-foreground"
+                            >
+                                {{ props.description }}
+                            </p>
+                        </header>
+                        <!-- Teleport target for page-level action buttons -->
+                        <div id="company-page-actions" class="flex items-center gap-4" />
+                    </div>
+                </div>
+                <!-- Page content -->
+                <div class="p-6">
+                    <slot />
+                </div>
             </main>
         </div>
     </div>
