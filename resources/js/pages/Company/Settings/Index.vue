@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { router, useForm, usePage } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
-import CompanyDashboardLayout from '@/layouts/CompanyDashboardLayout.vue';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
+import CompanyDashboardLayout from '@/layouts/CompanyDashboardLayout.vue';
 import type { SharedPageProps } from '@/types';
 import EmailController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/EmailController';
 import LogoController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/LogoController';

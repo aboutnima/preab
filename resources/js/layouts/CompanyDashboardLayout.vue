@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { router, usePage } from '@inertiajs/vue3';
-import { computed } from 'vue';
-import { HugeiconsIcon } from '@hugeicons/vue';
 import {
     ArrowRight01Icon,
     ArrowUpDownIcon,
@@ -11,6 +8,9 @@ import {
     PencilEdit01Icon,
     UserGroupIcon,
 } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/vue';
+import { router, usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import {
     DropdownMenu,
@@ -21,10 +21,10 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import type { NavItemProps, SharedPageProps } from '@/types';
-import DashboardController from '@/wayfinder/actions/App/Http/Controllers/Company/DashboardController';
 import LogoutController from '@/wayfinder/actions/App/Http/Controllers/Company/Authentication/LogoutController';
-import ProfileController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/ProfileController';
+import DashboardController from '@/wayfinder/actions/App/Http/Controllers/Company/DashboardController';
 import EmployeeController from '@/wayfinder/actions/App/Http/Controllers/Company/Employees/EmployeeController';
+import ProfileController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/ProfileController';
 
 const page = usePage<SharedPageProps>();
 

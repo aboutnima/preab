@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { router } from '@inertiajs/vue3';
-import { HugeiconsIcon } from '@hugeicons/vue';
 import {
     Add01Icon,
     Delete02Icon,
     PencilEdit01Icon,
     UserGroupIcon,
 } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/vue';
+import { router } from '@inertiajs/vue3';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -38,6 +38,7 @@ function destroy(employee: EmployeeType): void {
     if (!confirm(`Delete ${employee.first_name} ${employee.last_name}? This cannot be undone.`)) {
         return;
     }
+
     router.delete(EmployeeController.destroy({ employee: employee.id }).url);
 }
 </script>

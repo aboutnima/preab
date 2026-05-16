@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useForm } from '@inertiajs/vue3';
-import CompanyDashboardLayout from '@/layouts/CompanyDashboardLayout.vue';
-import CompanySettingsLayout from '@/layouts/CompanySettingsLayout.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import CompanyDashboardLayout from '@/layouts/CompanyDashboardLayout.vue';
+import CompanySettingsLayout from '@/layouts/CompanySettingsLayout.vue';
 import PasswordController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/PasswordController';
 
 defineOptions({ layout: [CompanyDashboardLayout, CompanySettingsLayout] });

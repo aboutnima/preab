@@ -5,8 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import CompanyDashboardLayout from '@/layouts/CompanyDashboardLayout.vue';
-import EmployeeController from '@/wayfinder/actions/App/Http/Controllers/Company/Employees/EmployeeController';
 import type { Gender } from '@/types';
+import EmployeeController from '@/wayfinder/actions/App/Http/Controllers/Company/Employees/EmployeeController';
 
 defineOptions({ layout: CompanyDashboardLayout });
 

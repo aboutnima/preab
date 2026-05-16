@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { router, usePage } from '@inertiajs/vue3';
-import { computed } from 'vue';
-import { HugeiconsIcon } from '@hugeicons/vue';
 import {
     Image01Icon,
     LockIcon,
     Mail01Icon,
     UserIcon,
 } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/vue';
+import { router, usePage } from '@inertiajs/vue3';
 import type { NavItemProps, SharedPageProps } from '@/types';
 import EmailController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/EmailController';
 import LogoController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/LogoController';
@@ -15,7 +14,6 @@ import PasswordController from '@/wayfinder/actions/App/Http/Controllers/Company
 import ProfileController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/ProfileController';
 
 const page = usePage<SharedPageProps>();
-const company = computed(() => page.props.auth);
 
 const settingsNav: NavItemProps[] = [
     { label: 'Profile', href: ProfileController.index().url, icon: UserIcon },

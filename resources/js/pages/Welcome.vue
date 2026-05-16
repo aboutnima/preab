@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3';
-import { HugeiconsIcon } from '@hugeicons/vue';
 import { LinkSquare01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/vue';
+import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>

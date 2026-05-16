@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { router, useForm, usePage } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
-import CompanyDashboardLayout from '@/layouts/CompanyDashboardLayout.vue';
-import CompanySettingsLayout from '@/layouts/CompanySettingsLayout.vue';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import CompanyDashboardLayout from '@/layouts/CompanyDashboardLayout.vue';
+import CompanySettingsLayout from '@/layouts/CompanySettingsLayout.vue';
 import type { SharedPageProps } from '@/types';
 import LogoController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/LogoController';
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { DashboardSquare01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/vue';
 import { usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
-import { HugeiconsIcon } from '@hugeicons/vue';
-import { DashboardSquare01Icon } from '@hugeicons/core-free-icons';
 import CompanyDashboardLayout from '@/layouts/CompanyDashboardLayout.vue';
 
 defineOptions({ layout: CompanyDashboardLayout });
