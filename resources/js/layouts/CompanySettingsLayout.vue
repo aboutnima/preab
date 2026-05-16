@@ -1,25 +1,31 @@
 <script setup lang="ts">
 import { router, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
-import { Separator } from '@/components/ui/separator';
+import { HugeiconsIcon } from '@hugeicons/vue';
+import {
+    Image01Icon,
+    LockIcon,
+    Mail01Icon,
+    UserIcon,
+} from '@hugeicons/core-free-icons';
 import type { NavItemProps, SharedPageProps } from '@/types';
-import EmailController from '@/actions/App/Http/Controllers/Company/Settings/EmailController';
-import LogoController from '@/actions/App/Http/Controllers/Company/Settings/LogoController';
-import PasswordController from '@/actions/App/Http/Controllers/Company/Settings/PasswordController';
-import ProfileController from '@/actions/App/Http/Controllers/Company/Settings/ProfileController';
+import EmailController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/EmailController';
+import LogoController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/LogoController';
+import PasswordController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/PasswordController';
+import ProfileController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/ProfileController';
 
 const page = usePage<SharedPageProps>();
 const company = computed(() => page.props.auth);
 
 const settingsNav: NavItemProps[] = [
-    { label: 'Profile', href: ProfileController.index().url, icon: 'user' },
-    { label: 'Logo', href: LogoController.index().url, icon: 'image' },
+    { label: 'Profile', href: ProfileController.index().url, icon: UserIcon },
+    { label: 'Logo', href: LogoController.index().url, icon: Image01Icon },
     {
         label: 'Email Address',
         href: EmailController.index().url,
-        icon: 'email',
+        icon: Mail01Icon,
     },
-    { label: 'Password', href: PasswordController.index().url, icon: 'lock' },
+    { label: 'Password', href: PasswordController.index().url, icon: LockIcon },
 ];
 
 function isActive(href: string): boolean {
@@ -51,86 +57,12 @@ function isActive(href: string): boolean {
                             "
                             @click.prevent="router.visit(item.href)"
                         >
-                            <svg
-                                v-if="item.icon === 'user'"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="size-4 shrink-0"
-                            >
-                                <path
-                                    d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
-                                />
-                                <circle cx="12" cy="7" r="4" />
-                            </svg>
-                            <svg
-                                v-else-if="item.icon === 'image'"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="size-4 shrink-0"
-                            >
-                                <rect
-                                    x="3"
-                                    y="3"
-                                    width="18"
-                                    height="18"
-                                    rx="2"
-                                />
-                                <circle cx="8.5" cy="8.5" r="1.5" />
-                                <polyline points="21 15 16 10 5 21" />
-                            </svg>
-                            <svg
-                                v-else-if="item.icon === 'email'"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="size-4 shrink-0"
-                            >
-                                <rect
-                                    x="2"
-                                    y="4"
-                                    width="20"
-                                    height="16"
-                                    rx="2"
-                                />
-                                <path
-                                    d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
-                                />
-                            </svg>
-                            <svg
-                                v-else-if="item.icon === 'lock'"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="size-4 shrink-0"
-                            >
-                                <rect
-                                    x="3"
-                                    y="11"
-                                    width="18"
-                                    height="11"
-                                    rx="2"
-                                    ry="2"
-                                />
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                            </svg>
+                            <HugeiconsIcon
+                                :icon="item.icon"
+                                :size="16"
+                                class="shrink-0"
+                                :stroke-width="1.8"
+                            />
                             {{ item.label }}
                         </a>
                     </li>

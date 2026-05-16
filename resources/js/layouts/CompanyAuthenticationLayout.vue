@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
+import { HugeiconsIcon } from '@hugeicons/vue';
+import { Layers01Icon, Tick01Icon } from '@hugeicons/core-free-icons';
 
 defineProps<{
     title?: string;
@@ -15,20 +17,12 @@ defineProps<{
             <!-- Logo / wordmark -->
             <div class="flex items-center gap-2.5">
                 <div class="flex size-8 items-center justify-center rounded-lg bg-background">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="size-4 text-foreground"
-                    >
-                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                        <path d="M2 17l10 5 10-5" />
-                        <path d="M2 12l10 5 10-5" />
-                    </svg>
+                    <HugeiconsIcon
+                        :icon="Layers01Icon"
+                        :size="16"
+                        class="text-foreground"
+                        :stroke-width="2"
+                    />
                 </div>
                 <span class="text-base font-semibold tracking-tight text-background">Preab</span>
             </div>
@@ -51,18 +45,12 @@ defineProps<{
                     :key="feature"
                     class="flex items-center gap-2 text-sm text-background/70"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="size-3.5 shrink-0 text-background/50"
-                    >
-                        <polyline points="20 6 9 17 4 12" />
-                    </svg>
+                    <HugeiconsIcon
+                        :icon="Tick01Icon"
+                        :size="14"
+                        class="shrink-0 text-background/50"
+                        :stroke-width="2.5"
+                    />
                     {{ feature }}
                 </li>
             </ul>
@@ -73,20 +61,12 @@ defineProps<{
             <!-- Mobile logo -->
             <div class="mb-8 flex items-center gap-2 lg:hidden">
                 <div class="flex size-8 items-center justify-center rounded-lg bg-foreground">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="size-4 text-background"
-                    >
-                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                        <path d="M2 17l10 5 10-5" />
-                        <path d="M2 12l10 5 10-5" />
-                    </svg>
+                    <HugeiconsIcon
+                        :icon="Layers01Icon"
+                        :size="16"
+                        class="text-background"
+                        :stroke-width="2"
+                    />
                 </div>
                 <span class="text-base font-semibold tracking-tight text-foreground">Preab</span>
             </div>
@@ -98,4 +78,3 @@ defineProps<{
         </div>
     </div>
 </template>
-

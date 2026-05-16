@@ -5,7 +5,7 @@ import CompanySettingsLayout from '@/layouts/CompanySettingsLayout.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import PasswordController from '@/actions/App/Http/Controllers/Company/Settings/PasswordController';
+import PasswordController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/PasswordController';
 
 defineOptions({ layout: [CompanyDashboardLayout, CompanySettingsLayout] });
 

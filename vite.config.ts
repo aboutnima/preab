@@ -26,10 +26,6 @@ export default defineConfig({
                     includeAbsolute: false,
                 },
             },
-        }),
-        wayfinder({
-            formVariants: true,
-            path: 'resources/js/wayfinder',
-        }),
+        }),w
     ],
 });

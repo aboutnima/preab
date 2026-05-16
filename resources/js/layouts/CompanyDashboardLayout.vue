@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { router, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
+import { HugeiconsIcon } from '@hugeicons/vue';
+import {
+    ArrowRight01Icon,
+    ArrowUpDownIcon,
+    DashboardSquare01Icon,
+    Layers01Icon,
+    Logout03Icon,
+    PencilEdit01Icon,
+} from '@hugeicons/core-free-icons';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import {
     DropdownMenu,
@@ -11,9 +20,9 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import type { NavItemProps, SharedPageProps } from '@/types';
-import DashboardController from '@/actions/App/Http/Controllers/Company/DashboardController';
-import LogoutController from '@/actions/App/Http/Controllers/Company/Authentication/LogoutController';
-import ProfileController from '@/actions/App/Http/Controllers/Company/Settings/ProfileController';
+import DashboardController from '@/wayfinder/actions/App/Http/Controllers/Company/DashboardController';
+import LogoutController from '@/wayfinder/actions/App/Http/Controllers/Company/Authentication/LogoutController';
+import ProfileController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/ProfileController';
 
 const page = usePage<SharedPageProps>();
 
@@ -35,7 +44,7 @@ const navItems: NavItemProps[] = [
     {
         label: 'Dashboard',
         href: DashboardController.index().url,
-        icon: 'dashboard',
+        icon: DashboardSquare01Icon,
     },
 ];
 
@@ -59,20 +68,12 @@ function logout(): void {
                 <div
                     class="flex size-7 items-center justify-center rounded-md bg-foreground"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="size-3.5 text-background"
-                    >
-                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                        <path d="M2 17l10 5 10-5" />
-                        <path d="M2 12l10 5 10-5" />
-                    </svg>
+                    <HugeiconsIcon
+                        :icon="Layers01Icon"
+                        :size="14"
+                        class="text-background"
+                        :stroke-width="2"
+                    />
                 </div>
                 <span
                     class="text-sm font-semibold tracking-tight text-sidebar-foreground"
@@ -92,64 +93,12 @@ function logout(): void {
                             "
                             @click.prevent="router.visit(item.href)"
                         >
-                            <template v-if="item.icon === 'dashboard'">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="size-4 shrink-0"
-                                >
-                                    <rect
-                                        x="3"
-                                        y="3"
-                                        width="7"
-                                        height="7"
-                                        rx="1"
-                                    />
-                                    <rect
-                                        x="14"
-                                        y="3"
-                                        width="7"
-                                        height="7"
-                                        rx="1"
-                                    />
-                                    <rect
-                                        x="3"
-                                        y="14"
-                                        width="7"
-                                        height="7"
-                                        rx="1"
-                                    />
-                                    <rect
-                                        x="14"
-                                        y="14"
-                                        width="7"
-                                        height="7"
-                                        rx="1"
-                                    />
-                                </svg>
-                            </template>
-                            <template v-else-if="item.icon === 'settings'">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="size-4 shrink-0"
-                                >
-                                    <circle cx="12" cy="12" r="3" />
-                                    <path
-                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
-                                    />
-                                </svg>
-                            </template>
+                            <HugeiconsIcon
+                                :icon="item.icon"
+                                :size="16"
+                                class="shrink-0"
+                                :stroke-width="1.8"
+                            />
                             {{ item.label }}
                         </a>
                     </li>
@@ -181,19 +130,12 @@ function logout(): void {
                                 {{ company?.email }}
                             </p>
                         </div>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="size-3.5 shrink-0 text-sidebar-foreground/40"
-                        >
-                            <path d="M8 9l4-4 4 4" />
-                            <path d="M16 15l-4 4-4-4" />
-                        </svg>
+                        <HugeiconsIcon
+                            :icon="ArrowUpDownIcon"
+                            :size="14"
+                            class="shrink-0 text-sidebar-foreground/40"
+                            :stroke-width="2"
+                        />
                     </DropdownMenuTrigger>
 
                     <DropdownMenuContent align="end" side="top" class="w-52">
@@ -213,21 +155,12 @@ function logout(): void {
                             class="cursor-pointer"
                             @click="router.visit(ProfileController.index().url)"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="mr-2 size-4"
-                            >
-                                <path d="M12 20h9" />
-                                <path
-                                    d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
-                                />
-                            </svg>
+                            <HugeiconsIcon
+                                :icon="PencilEdit01Icon"
+                                :size="16"
+                                class="mr-2"
+                                :stroke-width="1.8"
+                            />
                             Account settings
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
@@ -235,22 +168,12 @@ function logout(): void {
                             class="cursor-pointer text-destructive focus:text-destructive"
                             @click="logout"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="mr-2 size-4"
-                            >
-                                <path
-                                    d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
-                                />
-                                <polyline points="16 17 21 12 16 7" />
-                                <line x1="21" y1="12" x2="9" y2="12" />
-                            </svg>
+                            <HugeiconsIcon
+                                :icon="Logout03Icon"
+                                :size="16"
+                                class="mr-2"
+                                :stroke-width="1.8"
+                            />
                             Sign out
                         </DropdownMenuItem>
                     </DropdownMenuContent>
@@ -266,19 +189,13 @@ function logout(): void {
                         v-for="(crumb, index) in breadcrumbs"
                         :key="index"
                     >
-                        <svg
+                        <HugeiconsIcon
                             v-if="index > 0"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="size-3.5 shrink-0 text-border"
-                        >
-                            <polyline points="9 18 15 12 9 6" />
-                        </svg>
+                            :icon="ArrowRight01Icon"
+                            :size="14"
+                            class="shrink-0 text-border"
+                            :stroke-width="2"
+                        />
 
                         <a
                             v-if="crumb.href && index < breadcrumbs.length - 1"

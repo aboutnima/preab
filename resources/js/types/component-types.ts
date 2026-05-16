@@ -11,6 +11,7 @@ export type BreadcrumbItemProps = {
 export type NavItemProps = {
     label: string;
     href: string;
-    icon: string;
+    /** HugeIcons icon array, e.g. `DashboardSquare01Icon` from `@hugeicons/core-free-icons` */
+    icon: unknown;
 };
 
