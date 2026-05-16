@@ -36,14 +36,6 @@ function isActive(href: string): boolean {
 <template>
     <div class="flex min-h-full">
         <aside class="flex w-56 shrink-0 flex-col border-r border-border">
-            <div class="flex h-14 items-center border-b border-border px-5">
-                <p
-                    class="text-xs font-semibold tracking-wider text-muted-foreground uppercase"
-                >
-                    Account Settings
-                </p>
-            </div>
-
             <nav class="flex-1 overflow-y-auto p-5">
                 <ul class="space-y-0.5">
                     <li v-for="item in settingsNav" :key="item.href">
