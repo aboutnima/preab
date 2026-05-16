@@ -12,3 +12,21 @@ export type User = {
 export type Auth = {
     user: User;
 };
+
+export type Company = {
+    id: number;
+    name: string;
+    email: string;
+    phone: string | null;
+    address: string | null;
+    logo: string | null;
+    is_active: boolean;
+    email_verified_at: string | null;
+    created_at: string;
+    updated_at: string;
+};
+
+export type CompanyAuth = {
+    company: Company;
+};
+
