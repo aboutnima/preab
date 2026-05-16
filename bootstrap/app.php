@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets;
+use Illuminate\Http\Request;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -17,6 +18,28 @@ return Application::configure(basePath: dirname(__DIR__))
             HandleInertiaRequests::class,
             AddLinkHeadersForPreloadedAssets::class,
         ]);
+
+        /**
+         * Redirect unauthenticated users to the correct login page based on the requested URL.
+         */
+        $middleware->redirectGuestsTo(function (Request $request): string {
+            if ($request->is('company/*')) {
+                return route('company.authentication.login');
+            }
+
+            dd('No Route To Go');
+        });
+
+        /**
+         * Redirect already-authenticated guards away from guest-only pages.
+         */
+        $middleware->redirectUsersTo(function (Request $request): string {
+            if ($request->user('company')) {
+                return route('company.dashboard');
+            }
+
+            dd('No Route To Go');
+        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
