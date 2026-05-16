@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Enums\GenderEnum;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Company extends Authenticatable
+class Employee extends Authenticatable
 {
+    use Notifiable;
+
     /**
      * @var array<int, string>
      */
@@ -27,13 +31,14 @@ class Company extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'is_active' => 'boolean',
+        'gender' => GenderEnum::class,
     ];
 
     /**
-     * Get all employees belonging to this company.
+     * Get the company this employee belongs to.
      */
-    public function employees(): HasMany
+    public function company(): BelongsTo
     {
-        return $this->hasMany(Employee::class);
+        return $this->belongsTo(Company::class);
     }
 }

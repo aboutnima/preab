@@ -35,7 +35,7 @@ return Application::configure(basePath: dirname(__DIR__))
          */
         $middleware->redirectUsersTo(function (Request $request): string {
             if ($request->user('company')) {
-                return route('company.dashboard');
+                return route('company.dashboard.index');
             }
 
             dd('No Route To Go');

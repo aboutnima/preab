@@ -9,6 +9,7 @@ import {
     Layers01Icon,
     Logout03Icon,
     PencilEdit01Icon,
+    UserGroupIcon,
 } from '@hugeicons/core-free-icons';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import {
@@ -23,6 +24,7 @@ import type { NavItemProps, SharedPageProps } from '@/types';
 import DashboardController from '@/wayfinder/actions/App/Http/Controllers/Company/DashboardController';
 import LogoutController from '@/wayfinder/actions/App/Http/Controllers/Company/Authentication/LogoutController';
 import ProfileController from '@/wayfinder/actions/App/Http/Controllers/Company/Settings/ProfileController';
+import EmployeeController from '@/wayfinder/actions/App/Http/Controllers/Company/Employees/EmployeeController';
 
 const page = usePage<SharedPageProps>();
 
@@ -45,6 +47,11 @@ const navItems: NavItemProps[] = [
         label: 'Dashboard',
         href: DashboardController.index().url,
         icon: DashboardSquare01Icon,
+    },
+    {
+        label: 'Employees',
+        href: EmployeeController.index().url,
+        icon: UserGroupIcon,
     },
 ];
 

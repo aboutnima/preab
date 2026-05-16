@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table): void {
+        Schema::create('employees', function (Blueprint $table): void {
             $table->id();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('gender')->nullable();
-            $table->string('username')->unique()->nullable();
+            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('gender')->nullable();
+            $table->string('username')->unique()->nullable();
             $table->string('avatar')->nullable();
             $table->text('bio')->nullable();
             $table->boolean('is_active')->default(true);
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('employees');
     }
 };

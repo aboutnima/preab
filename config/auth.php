@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Company;
-use App\Models\User;
+use App\Models\Employee;
 
 return [
 
@@ -17,8 +17,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'user',
-        'passwords' => 'users',
+        'guard' => 'company',
+        'passwords' => 'employees',
     ],
 
     /*
@@ -39,9 +39,9 @@ return [
     */
 
     'guards' => [
-        'user' => [
+        'employee' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'employees',
         ],
         'company' => [
             'driver' => 'session',
@@ -67,9 +67,9 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'employees' => [
             'driver' => 'eloquent',
-            'model' => User::class,
+            'model' => Employee::class,
         ],
         'companies' => [
             'driver' => 'eloquent',

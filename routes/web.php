@@ -1,11 +1,21 @@
 <?php
 
 use App\Http\Controllers\Company;
+use App\Http\Controllers\Company\Employees\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('company')->name('company.')->group(function (): void {
     Route::middleware('auth:company')->group(function (): void {
         Route::get('dashboard', [Company\DashboardController::class, 'index'])->name('dashboard.index');
+
+        Route::prefix('employees')->name('employees.')->controller(EmployeeController::class)->group(function (): void {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/{employee}/edit', 'edit')->name('edit');
+            Route::patch('/{employee}', 'update')->name('update');
+            Route::delete('/{employee}', 'destroy')->name('destroy');
+        });
 
         Route::prefix('settings')->name('settings.')->group(function (): void {
             Route::redirect('/', '/company/settings/profile');
