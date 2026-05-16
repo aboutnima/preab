@@ -4,6 +4,10 @@ use App\Http\Controllers\Company;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('company')->name('company.')->group(function (): void {
+    Route::middleware('auth:company')->group(function (): void {
+        Route::get('dashboard', [Company\DashboardController::class, 'index'])->name('dashboard.index');
+    });
+
     Route::prefix('authentication')->name('authentication.')->group(function (): void {
         Route::middleware('guest:company')->group(function (): void {
             Route::controller(Company\Authentication\LoginController::class)->group(function (): void {
